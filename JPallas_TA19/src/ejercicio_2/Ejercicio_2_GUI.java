@@ -1,33 +1,24 @@
 package ejercicio_2;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import java.awt.BorderLayout;
 import javax.swing.JButton;
-import javax.swing.BoxLayout;
-import java.awt.GridLayout;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JComboBox;
-import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
-import javax.swing.Action;
 import java.awt.event.ActionListener;
-import javax.swing.DefaultComboBoxModel;
 import java.awt.Font;
 
 public class Ejercicio_2_GUI extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField addMovie;
-	public JComboBox<String> comboBox = new JComboBox();
+	public JComboBox<String> comboBox = new JComboBox<String>();
 
 	/**
 	 * Create the frame.
