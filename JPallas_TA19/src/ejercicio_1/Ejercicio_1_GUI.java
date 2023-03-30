@@ -1,6 +1,5 @@
 package ejercicio_1;
 
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -15,11 +14,11 @@ import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 import javax.swing.Action;
 import javax.swing.SwingConstants;
-import java.awt.SystemColor;
 import java.awt.Color;
 
 public class Ejercicio_1_GUI extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtAsd;
 	private final Action action = new SwingAction();
@@ -60,6 +59,9 @@ public class Ejercicio_1_GUI extends JFrame {
 	}
 
 	private class SwingAction extends AbstractAction {
+
+		private static final long serialVersionUID = 1L;
+
 		public SwingAction() {
 			putValue(NAME, "Greet me!");
 			putValue(SHORT_DESCRIPTION, "Greets the user on click");
