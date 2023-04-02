@@ -52,7 +52,7 @@ public class Ejercicio_2_GUI extends JFrame {
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnNewButton.setBounds(388, 57, 73, 29);
 
-		// Function to add textfield content to comboBox movie list on button click
+		// Performs action on press
 		btnNewButton.addActionListener(add);
 
 		JLabel lblNewLabel_1 = new JLabel("Added movies");
@@ -71,6 +71,7 @@ public class Ejercicio_2_GUI extends JFrame {
 		setVisible(true);
 	}
 
+	//Function to add textfield content to comboBox movie list on button click
 	ActionListener add = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			String value = addMovie.getText();
