@@ -9,7 +9,6 @@ public class Ejercicio_2_App {
 			public void run() {
 				try {
 					Ejercicio_2_GUI frame = new Ejercicio_2_GUI();
-					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

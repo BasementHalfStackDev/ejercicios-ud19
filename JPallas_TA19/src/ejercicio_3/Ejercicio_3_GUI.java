@@ -89,15 +89,20 @@ public class Ejercicio_3_GUI extends JFrame {
 		chckbxAdministration.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		chckbxAdministration.setBounds(10, 225, 129, 23);
 		contentPane.add(chckbxAdministration);
-		
+
 		JButton btnSendButton = new JButton("Send!");
-		btnSendButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("Button is pressed.");
-			}
-		});
+		btnSendButton.addActionListener(send);
 		btnSendButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnSendButton.setBounds(93, 262, 89, 23);
 		contentPane.add(btnSendButton);
+
+		setVisible(true);
 	}
+
+	ActionListener send = new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			System.out.println("Button is pressed.");
+		}
+	};
+
 }

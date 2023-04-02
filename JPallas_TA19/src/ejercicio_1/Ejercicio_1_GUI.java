@@ -1,6 +1,5 @@
 package ejercicio_1;
 
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -22,7 +21,6 @@ public class Ejercicio_1_GUI extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtAsd;
 	private final Action action = new SwingAction();
-
 
 	/**
 	 * Create the frame.
@@ -56,6 +54,8 @@ public class Ejercicio_1_GUI extends JFrame {
 		btnNewButton.setAction(action);
 		btnNewButton.setBounds(78, 157, 121, 35);
 		contentPane.add(btnNewButton);
+
+		setVisible(true);
 	}
 
 	private class SwingAction extends AbstractAction {
