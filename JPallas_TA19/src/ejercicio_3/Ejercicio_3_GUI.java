@@ -11,19 +11,27 @@ import java.awt.FlowLayout;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JRadioButton;
+import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JCheckBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Enumeration;
 import java.awt.event.ActionEvent;
 
 public class Ejercicio_3_GUI extends JFrame {
 
 	private JPanel contentPane;
+	private JCheckBox chckbxProgramming;
+	private JCheckBox chckbxGraphicdesign;
+	private JCheckBox chckbxAdministration;
+	private JRadioButton rdbtnWindows;
+	private JRadioButton rdbtnLinux;
+	private JRadioButton rdbtnMacOS;
+	private JRadioButton rdbtnTempleOS;
+	private ButtonGroup choose_OS;
 
-	/**
-	 * Create the frame.
-	 */
 	public Ejercicio_3_GUI() {
 		setTitle("Choose your settings");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -46,46 +54,46 @@ public class Ejercicio_3_GUI extends JFrame {
 		contentPane.add(lbl_Specialty);
 
 		// Create radio buttons
-		JRadioButton rdbtnWindows = new JRadioButton("Windows");
+		rdbtnWindows = new JRadioButton("Windows");
 		rdbtnWindows.setSelected(true);
 		rdbtnWindows.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		rdbtnWindows.setBounds(10, 38, 109, 23);
 		contentPane.add(rdbtnWindows);
 
-		JRadioButton rdbtnLinux = new JRadioButton("Linux");
+		rdbtnLinux = new JRadioButton("Linux");
 		rdbtnLinux.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		rdbtnLinux.setBounds(10, 64, 109, 23);
 		contentPane.add(rdbtnLinux);
 
-		JRadioButton rdbtnMacOS = new JRadioButton("MacOS");
+		rdbtnMacOS = new JRadioButton("MacOS");
 		rdbtnMacOS.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		rdbtnMacOS.setBounds(10, 90, 109, 23);
 		contentPane.add(rdbtnMacOS);
 
-		JRadioButton rdbtnTempleOS = new JRadioButton("TempleOS?");
+		rdbtnTempleOS = new JRadioButton("TempleOS?");
 		rdbtnTempleOS.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		rdbtnTempleOS.setBounds(10, 116, 109, 23);
 		contentPane.add(rdbtnTempleOS);
 
 		// Group radio buttons
-		ButtonGroup choose_OS = new ButtonGroup();
+		choose_OS = new ButtonGroup();
 		choose_OS.add(rdbtnWindows);
 		choose_OS.add(rdbtnLinux);
 		choose_OS.add(rdbtnMacOS);
 		choose_OS.add(rdbtnTempleOS);
 
 		// Create checkboxes
-		JCheckBox chckbxProgramming = new JCheckBox("Programming");
+		chckbxProgramming = new JCheckBox("Programming");
 		chckbxProgramming.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		chckbxProgramming.setBounds(10, 173, 129, 23);
 		contentPane.add(chckbxProgramming);
 
-		JCheckBox chckbxGraphicdesign = new JCheckBox("Graphic Design");
+		chckbxGraphicdesign = new JCheckBox("Graphic Design");
 		chckbxGraphicdesign.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		chckbxGraphicdesign.setBounds(10, 199, 129, 23);
 		contentPane.add(chckbxGraphicdesign);
 
-		JCheckBox chckbxAdministration = new JCheckBox("Administration");
+		chckbxAdministration = new JCheckBox("Administration");
 		chckbxAdministration.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		chckbxAdministration.setBounds(10, 225, 129, 23);
 		contentPane.add(chckbxAdministration);
@@ -102,7 +110,32 @@ public class Ejercicio_3_GUI extends JFrame {
 	ActionListener send = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Button is pressed.");
+			ArrayList<String> selectedBoxes = new ArrayList<String>();
+			String selectedBtn = "";
+
+			if (chckbxProgramming.isSelected()) {
+				selectedBoxes.add(chckbxProgramming.getText());
+			}
+
+			if (chckbxGraphicdesign.isSelected()) {
+				selectedBoxes.add(chckbxGraphicdesign.getText());
+			}
+
+			if (chckbxAdministration.isSelected()) {
+				selectedBoxes.add(chckbxAdministration.getText());
+			}
+
+			for (Enumeration<AbstractButton> OSbuttons = choose_OS.getElements(); OSbuttons.hasMoreElements();) {
+				AbstractButton tempbutton = OSbuttons.nextElement();
+				if (tempbutton.isSelected()) {
+					selectedBtn = tempbutton.getText();
+				}
+			}
+
+			System.out.println(selectedBoxes + selectedBtn);
+
 		}
+
 	};
 
 }
