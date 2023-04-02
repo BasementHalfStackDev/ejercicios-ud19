@@ -1,13 +1,10 @@
 package ejercicio_3;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JSplitPane;
-import javax.swing.JScrollPane;
-import java.awt.FlowLayout;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JRadioButton;
@@ -19,6 +16,9 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.awt.event.ActionEvent;
+import javax.swing.JSlider;
+import javax.swing.SwingConstants;
+import java.awt.SystemColor;
 
 public class Ejercicio_3_GUI extends JFrame {
 
@@ -31,12 +31,15 @@ public class Ejercicio_3_GUI extends JFrame {
 	private JRadioButton rdbtnMacOS;
 	private JRadioButton rdbtnTempleOS;
 	private ButtonGroup choose_OS;
+	private JSlider hourSlider;
+	private JLabel lbl_Hours;
 
 	public Ejercicio_3_GUI() {
 		setTitle("Choose your settings");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 298, 335);
+		setBounds(100, 100, 298, 401);
 		contentPane = new JPanel();
+		contentPane.setBackground(SystemColor.menu);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -98,10 +101,24 @@ public class Ejercicio_3_GUI extends JFrame {
 		chckbxAdministration.setBounds(10, 225, 129, 23);
 		contentPane.add(chckbxAdministration);
 
+		hourSlider = new JSlider();
+		hourSlider.setBounds(10, 291, 262, 26);
+		hourSlider.setMinimum(0);
+		hourSlider.setMaximum(10);
+		hourSlider.setValue(5);
+		hourSlider.addChangeListener(sliderChange);
+		contentPane.add(hourSlider);
+
+		lbl_Hours = new JLabel("Hours spent using a computer: " + hourSlider.getValue());
+		lbl_Hours.setHorizontalAlignment(SwingConstants.CENTER);
+		lbl_Hours.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lbl_Hours.setBounds(10, 260, 262, 20);
+		contentPane.add(lbl_Hours);
+
 		JButton btnSendButton = new JButton("Send!");
 		btnSendButton.addActionListener(send);
 		btnSendButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnSendButton.setBounds(93, 262, 89, 23);
+		btnSendButton.setBounds(98, 328, 89, 23);
 		contentPane.add(btnSendButton);
 
 		setVisible(true);
@@ -109,9 +126,9 @@ public class Ejercicio_3_GUI extends JFrame {
 
 	ActionListener send = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			System.out.println("Button is pressed.");
 			ArrayList<String> selectedBoxes = new ArrayList<String>();
 			String selectedBtn = "";
+			int hours = hourSlider.getValue();
 
 			if (chckbxProgramming.isSelected()) {
 				selectedBoxes.add(chckbxProgramming.getText());
@@ -132,10 +149,16 @@ public class Ejercicio_3_GUI extends JFrame {
 				}
 			}
 
-			System.out.println(selectedBoxes + selectedBtn);
-
+			setVisible(false);
+			Ejercicio_3_DisplayChoices_GUI frame = new Ejercicio_3_DisplayChoices_GUI(selectedBtn, selectedBoxes,
+					hours);
 		}
+	};
 
+	ChangeListener sliderChange = new ChangeListener() {
+		public void stateChanged(ChangeEvent e) {
+			lbl_Hours.setText("Hours spent using a computer: " + hourSlider.getValue());
+		}
 	};
 
 }
