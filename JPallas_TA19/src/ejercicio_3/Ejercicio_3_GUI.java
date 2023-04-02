@@ -124,6 +124,7 @@ public class Ejercicio_3_GUI extends JFrame {
 		setVisible(true);
 	}
 
+	// Action listener that gets the form values once the button is pressed
 	ActionListener send = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			ArrayList<String> selectedBoxes = new ArrayList<String>();
@@ -149,12 +150,14 @@ public class Ejercicio_3_GUI extends JFrame {
 				}
 			}
 
+			// Displays selected options
 			setVisible(false);
 			Ejercicio_3_DisplayChoices_GUI frame = new Ejercicio_3_DisplayChoices_GUI(selectedBtn, selectedBoxes,
 					hours);
 		}
 	};
 
+	// Listener that updates the new value of the slider
 	ChangeListener sliderChange = new ChangeListener() {
 		public void stateChanged(ChangeEvent e) {
 			lbl_Hours.setText("Hours spent using a computer: " + hourSlider.getValue());
